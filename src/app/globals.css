@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+/* ── Tokens ─────────────────────────────────────────────────── */
+:root {
+  --bg:            #141413;
+  --bg-raised:     #1c1c1a;
+  --bg-subtle:     #222220;
+  --surface:       #1e1e1c;
+  --surface-hover: #252523;
+  --border:        #2e2e2c;
+  --border-hover:  #3e3e3b;
+
+  --text-primary:  #e8e6e1;
+  --text-muted:    #8a8880;
+  --text-faint:    #56554f;
+
+  --accent:        #e8703a;   /* orange */
+  --accent-dim:    rgba(232,112,58,0.12);
+  --accent-hover:  #f08050;
+
+  --red:           #c0392b;
+  --green:         #27ae60;
+  --blue:          #2980b9;
+
+  /* node palette */
+  --node-0: #7c6ef7;
+  --node-1: #4ea8de;
+  --node-2: #3dbf82;
+  --node-3: #c9a96e;
+  --node-4: #e07070;
+  --node-5: #d48fb0;
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--text-primary);
+  --font-sans: var(--font-lora);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* ── Reset ──────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-lora), Georgia, "Times New Roman", serif;
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar            { width: 5px; height: 5px; }
+::-webkit-scrollbar-track      { background: transparent; }
+::-webkit-scrollbar-thumb      { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover{ background: var(--border-hover); }
+
+/* ── Typography ─────────────────────────────────────────────── */
+h1 { font-size: 26px; font-weight: 500; letter-spacing: -0.3px; line-height: 1.2; }
+h2 { font-size: 18px; font-weight: 500; letter-spacing: -0.2px; }
+h3 { font-size: 14px; font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase; color: var(--text-muted); }
+a  { color: inherit; text-decoration: none; }
+code, pre { font-family: var(--font-geist-mono), "Courier New", monospace; font-size: 13px; }
+
+/* ── Cards ──────────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.card-hover {
+  transition: border-color 0.15s ease, background 0.15s ease;
+  cursor: default;
+}
+.card-hover:hover {
+  border-color: var(--border-hover);
+  background: var(--surface-hover);
+}
+
+/* ── Buttons ────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-lora), serif;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 7px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: border-color 0.12s ease, background 0.12s ease, color 0.12s ease;
+  text-decoration: none;
+}
+.btn:hover {
+  border-color: var(--border-hover);
+  background: var(--surface-hover);
+}
+
+.btn-accent {
+  background: var(--accent-dim);
+  border-color: rgba(232,112,58,0.3);
+  color: var(--accent);
+}
+.btn-accent:hover {
+  background: rgba(232,112,58,0.2);
+  border-color: var(--accent);
+  color: var(--accent-hover);
+}
+
+/* ── Divider ────────────────────────────────────────────────── */
+hr { border: none; border-top: 1px solid var(--border); }
+
+/* ── Badge ──────────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.03em;
+}
+.badge-running { background: rgba(39,174,96,0.12);  color: var(--green); border: 1px solid rgba(39,174,96,0.25); }
+.badge-done    { background: rgba(41,128,185,0.12);  color: var(--blue);  border: 1px solid rgba(41,128,185,0.25); }
+.badge-error   { background: rgba(192,57,43,0.12);   color: var(--red);   border: 1px solid rgba(192,57,43,0.25); }
+.badge-idle    { background: var(--bg-subtle);        color: var(--text-muted); border: 1px solid var(--border); }
